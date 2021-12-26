@@ -1,0 +1,15 @@
+{
+  "name": "blogme",
+  "version": "1.0.0",
+  "description": "A school project, making an simple Blog-CMS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "parcel": "parcel src/index.html src/html/*.html src/assets/*.jpg"
+  },
+  "author": "Ludvig Thunberg",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.0.1"
+  }
+}
