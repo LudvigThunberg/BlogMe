@@ -1,0 +1,92 @@
+@import "variables";
+@import "globalStyling";
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: "Work Sans", sans-serif;
+}
+body {
+  #createArticle-background-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 100px;
+    background-image: url(../../dist/assets/blogme-createArticle-skyline.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    h1 {
+      color: $gray;
+      font-size: 1.5rem;
+    }
+    #createArticle-content-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      #bloger-info-container {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+      }
+      .input-container {
+        width: 80%;
+        #createArticle-input-title {
+          width: 100%;
+          min-height: 55px;
+          background: $light-gray;
+          border: $border;
+          border-radius: 10px;
+          font-size: 1.2rem;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          padding-left: 20px;
+        }
+      }
+      #createArticle-button-container {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        .create-button {
+          height: 57px;
+          min-width: 120px;
+          border: $border;
+          background: $button-pink;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+          font-size: 0.5rem;
+          font-family: inherit;
+          color: $gray;
+          font-weight: bold;
+          transition: all 0.2s ease;
+          &:hover {
+            background: $button-hover;
+          }
+        }
+      }
+    }
+    #createArticle-go-button {
+      width: 238px;
+      height: 57px;
+      border: $border;
+      background: $button-pink;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      font-size: 1.8rem;
+      font-family: inherit;
+      color: $gray;
+      font-weight: bold;
+      margin-bottom: 50px;
+      transition: all 0.2s ease;
+      &:hover {
+        background: $button-hover;
+        width: 230px;
+      }
+    }
+  }
+}
