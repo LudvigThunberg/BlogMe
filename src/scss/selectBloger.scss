@@ -1,0 +1,67 @@
+@import "variables";
+@import "globalStyling";
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: "Work Sans", sans-serif;
+}
+body {
+  #selectBloger-background-container {
+    padding-top: 100px;
+    background-image: url(../../dist/assets/blogme-createArticle-skyline.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    #selectBloger-styling-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      gap: 40px;
+      h1 {
+        color: $gray;
+        font-size: 1.5rem;
+      }
+      #selectBloger-select-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        #selectBloger-blogers {
+          width: 80%;
+          min-height: 55px;
+          background: $light-gray;
+          border: $border;
+          border-radius: 10px;
+          font-size: 1.2rem;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+
+    #selectBloger-go-button {
+      height: 57px;
+      width: 238px;
+      border: $border;
+      background: $button-pink;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      font-size: 0.5rem;
+      font-family: inherit;
+      color: $gray;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      margin-bottom: 30px;
+      &:hover {
+        background: $button-hover;
+      }
+    }
+  }
+}
