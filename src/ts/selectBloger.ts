@@ -3,6 +3,10 @@ import { Bloger } from "./models/Bloger";
 window.onload = function () {
   getFromLocalStorage();
   createBlogersHtml();
+  let selectBlogerSelector: HTMLSelectElement = document.getElementById(
+    "selectBloger-blogers"
+  ) as HTMLSelectElement;
+  selectBlogerSelector.addEventListener("change", handleselectorchange);
 };
 
 let blogers: Bloger[] = [];
@@ -32,4 +36,13 @@ function createBlogersHtml() {
     blogerOption.value = blogers[i].id.toString();
     selectBlogerBlogers.appendChild(blogerOption);
   }
+}
+
+function handleselectorchange() {
+  let selectBlogerSelector: HTMLSelectElement = document.getElementById(
+    "selectBloger-blogers"
+  ) as HTMLSelectElement;
+  let blogerIdValue = selectBlogerSelector.value;
+  sessionStorage.setItem("blogerIdValue", blogerIdValue);
+  window.location.href = "createArticle.html";
 }
