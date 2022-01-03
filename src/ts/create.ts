@@ -26,13 +26,15 @@ function handleGoButton() {
   ) as HTMLInputElement;
 
   let id: number = new Date().getTime();
+  let blogPosts: [] = [];
 
   let createBloger: Bloger = new Bloger(
     id,
     createBlogTitleInput.value,
     createAuthorInput.value,
     createBlogDescriptionInput.value,
-    createBlogImgUrl.value
+    createBlogImgUrl.value,
+    blogPosts
   );
   blogers.push(createBloger);
   sendToLocalStorage();
