@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "parcel": "parcel src/index.html src/html/*.html src/assets/*.jpg"
+    "parcel": "parcel src/index.html src/html/*.html src/assets/*.jpg --no-cache"
   },
   "author": "Ludvig Thunberg",
   "license": "ISC",
