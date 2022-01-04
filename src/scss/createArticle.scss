@@ -8,17 +8,18 @@
   font-family: "Work Sans", sans-serif;
 }
 body {
+  //justify-content: space-between;
+  padding-top: 100px;
+  background-image: url(../../dist/assets/blogme-createArticle-skyline.jpg);
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   #createArticle-background-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 100px;
-    background-image: url(../../dist/assets/blogme-createArticle-skyline.jpg);
-    width: 100vw;
-    height: 100vh;
-    background-position: center;
-    background-size: cover;
     h1 {
       color: $gray;
       font-size: 1.5rem;
@@ -45,7 +46,8 @@ body {
           border-radius: 10px;
           font-size: 1.2rem;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          padding-left: 20px;
+          padding: 10px;
+          outline: none;
         }
       }
       #createArticle-button-container {
@@ -69,6 +71,36 @@ body {
           }
         }
       }
+      #blog-posts-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        .new-textarea {
+          width: 80%;
+          min-height: 150px;
+          background: $light-gray;
+          border: $border;
+          border-radius: 10px;
+          font-size: 1.2rem;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          padding: 10px;
+          resize: vertical;
+          outline: none;
+        }
+        .new-image-input {
+          width: 80%;
+          min-height: 55px;
+          background: $light-gray;
+          border: $border;
+          border-radius: 10px;
+          font-size: 1.2rem;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          padding: 10px;
+          outline: none;
+        }
+      }
     }
     #createArticle-go-button {
       width: 238px;
@@ -81,7 +113,7 @@ body {
       font-family: inherit;
       color: $gray;
       font-weight: bold;
-      margin-bottom: 50px;
+      margin: 50px 0 50px 0;
       transition: all 0.2s ease;
       &:hover {
         background: $button-hover;
