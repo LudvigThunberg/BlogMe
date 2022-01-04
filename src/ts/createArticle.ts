@@ -28,6 +28,10 @@ function eventListeners() {
     "click",
     createImageInputWithButtonClick
   );
+  let createArticlePostButton: HTMLButtonElement = document.getElementById(
+    "createArticle-post-button"
+  ) as HTMLButtonElement;
+  createArticlePostButton.addEventListener("click", handlePostButtonClick);
 }
 
 function sendToLocalStorage() {
@@ -125,4 +129,13 @@ function saveImageToBlogContent() {
   blogContent.push(imageToBlogContent);
 
   blogPostsContainer.innerHTML = "";
+}
+
+function handlePostButtonClick() {
+  let blogCreator = blogers.find(
+    (theCreator) => theCreator.id.toString() === blogerIdValue
+  );
+  blogCreator.blogPosts;
+  [].push(blogContent);
+  console.log(blogers);
 }
