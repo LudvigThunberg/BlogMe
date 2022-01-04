@@ -57,17 +57,37 @@ function createTextInputWithButtonClick() {
   let blogPostsContainer: HTMLDivElement = document.getElementById(
     "blog-posts-container"
   ) as HTMLDivElement;
-  let newTextArea = document.createElement("textarea");
-  newTextArea.className = "new-textarea";
-  blogPostsContainer.appendChild(newTextArea);
+
+  if (blogPostsContainer.innerHTML.length <= 0) {
+    let newTextArea = document.createElement("textarea");
+    let saveTextButton = document.createElement("button");
+
+    saveTextButton.id = "save-text-button";
+    newTextArea.className = "new-textarea";
+
+    saveTextButton.innerHTML = "Spara text!";
+
+    blogPostsContainer.appendChild(newTextArea);
+    blogPostsContainer.appendChild(saveTextButton);
+  }
 }
 
 function createImageInputWithButtonClick() {
   let blogPostsContainer: HTMLDivElement = document.getElementById(
     "blog-posts-container"
   ) as HTMLDivElement;
-  let newImageInput = document.createElement("input");
-  newImageInput.className = "new-image-input";
-  newImageInput.type = "text";
-  blogPostsContainer.appendChild(newImageInput);
+  if (blogPostsContainer.innerHTML.length <= 0) {
+    let newImageInput = document.createElement("input");
+    let saveImageButton = document.createElement("button");
+
+    saveImageButton.id = "save-image-button";
+    newImageInput.className = "new-image-input";
+
+    saveImageButton.innerHTML = "Spara bild!";
+
+    newImageInput.type = "text";
+
+    blogPostsContainer.appendChild(newImageInput);
+    blogPostsContainer.appendChild(saveImageButton);
+  }
 }
