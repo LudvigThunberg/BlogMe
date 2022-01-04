@@ -6,8 +6,7 @@ let blogers: Bloger[] = [];
 window.onload = function () {
   getFromLocalStorage();
   getFromSessionStorage();
-  console.log(blogerIdValue);
-  console.log(blogers);
+  findCorrectBlogger();
 };
 
 function sendToLocalStorage() {
@@ -27,4 +26,11 @@ function getFromLocalStorage() {
 
 function getFromSessionStorage() {
   blogerIdValue = sessionStorage.getItem("blogerIdValue");
+}
+
+function findCorrectBlogger() {
+  let blogCreator = blogers.find(
+    (theCreator) => theCreator.id.toString() === blogerIdValue
+  );
+  console.log(blogCreator);
 }
