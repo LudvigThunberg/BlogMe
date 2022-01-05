@@ -1,48 +1,37 @@
 import { Bloger } from "./models/Bloger";
-import { Text } from "./models/Text";
-import { Image } from "./models/Image";
+import { BlogPost } from "./models/BlogPost";
 
 let blogerIdValue: string;
 let blogers: Bloger[] = [];
-let blogContent = [];
+let blogPosts: BlogPost[] = [];
 
 window.onload = function () {
   getFromLocalStorage();
   getFromSessionStorage();
-  findCorrectBlogger();
   eventListeners();
 };
 
 function eventListeners() {
-  let createArticleTextFieldButton: HTMLButtonElement = document.getElementById(
-    "createArticle-text-field-button"
-  ) as HTMLButtonElement;
-  createArticleTextFieldButton.addEventListener(
-    "click",
-    createTextInputWithButtonClick
-  );
-  let createArticleImageFieldButton: HTMLButtonElement = document.getElementById(
-    "createArticle-image-field-button"
-  ) as HTMLButtonElement;
-  createArticleImageFieldButton.addEventListener(
-    "click",
-    createImageInputWithButtonClick
-  );
   let createArticlePostButton: HTMLButtonElement = document.getElementById(
     "createArticle-post-button"
   ) as HTMLButtonElement;
-  createArticlePostButton.addEventListener("click", handlePostButtonClick);
+  createArticlePostButton.addEventListener("click", usePostButton);
 }
 
-function sendToLocalStorage() {
+function sendBlogersToLocalStorage() {
   let blogersLS = JSON.stringify(blogers);
   localStorage.setItem("blogers", blogersLS);
+}
+
+function sendBlogPostsToLocalStorage() {
+  let blogPostsLS = JSON.stringify(blogPosts);
+  localStorage.setItem("blogPosts", blogPostsLS);
 }
 
 function getFromLocalStorage() {
   let blogersLS = localStorage.getItem("blogers");
   if (!blogersLS) {
-    sendToLocalStorage();
+    sendBlogersToLocalStorage();
   } else {
     blogersLS = localStorage.getItem("blogers");
     blogers = JSON.parse(blogersLS);
@@ -53,14 +42,37 @@ function getFromSessionStorage() {
   blogerIdValue = sessionStorage.getItem("blogerIdValue");
 }
 
-function findCorrectBlogger() {
+function usePostButton() {
   let blogCreator = blogers.find(
     (theCreator) => theCreator.id.toString() === blogerIdValue
   );
-  console.log(blogCreator);
+
+  let newTextarea: HTMLSpanElement = document.getElementById(
+    "new-textarea"
+  ) as HTMLSpanElement;
+  let newImageInput: HTMLInputElement = document.getElementById(
+    "new-image-input"
+  ) as HTMLInputElement;
+  let createArticleInputTitle: HTMLInputElement = document.getElementById(
+    "createArticle-input-title"
+  ) as HTMLInputElement;
+
+  let blogPostId: number = new Date().getTime();
+
+  let createBlogPost: BlogPost = new BlogPost(
+    blogCreator.id,
+    blogPostId,
+    createArticleInputTitle.value,
+    newImageInput.value,
+    newTextarea.innerHTML
+  );
+  blogPosts.push(createBlogPost);
+  console.log(blogPosts);
+  sendBlogPostsToLocalStorage();
+  window.location.href = "blogPage.html";
 }
 
-function createTextInputWithButtonClick() {
+/* function createTextInputWithButtonClick() {
   let blogPostsContainer: HTMLDivElement = document.getElementById(
     "blog-posts-container"
   ) as HTMLDivElement;
@@ -101,9 +113,9 @@ function createImageInputWithButtonClick() {
     blogPostsContainer.appendChild(newImageInput);
     blogPostsContainer.appendChild(saveImageButton);
   }
-}
+} */
 
-function saveTextToBlogContent() {
+/* function saveTextToBlogContent() {
   let newTextArea: HTMLTextAreaElement = document.getElementById(
     "new-textarea"
   ) as HTMLTextAreaElement;
@@ -138,4 +150,4 @@ function handlePostButtonClick() {
   blogCreator.blogPosts;
   [].push(blogContent);
   console.log(blogers);
-}
+} */
