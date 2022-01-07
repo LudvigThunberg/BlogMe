@@ -8,6 +8,7 @@ let blogPosts: BlogPost[] = [];
 window.onload = function () {
   getFromLocalStorage();
   getFromSessionStorage();
+  getBlogPostsFromLocalStorage();
   eventListeners();
 };
 
@@ -35,6 +36,16 @@ function getFromLocalStorage() {
   } else {
     blogersLS = localStorage.getItem("blogers");
     blogers = JSON.parse(blogersLS);
+  }
+}
+
+function getBlogPostsFromLocalStorage() {
+  let blogPostsLS = localStorage.getItem("blogPosts");
+  if (!blogPostsLS) {
+    sendBlogPostsToLocalStorage();
+  } else {
+    blogPostsLS = localStorage.getItem("blogPosts");
+    blogPosts = JSON.parse(blogPostsLS);
   }
 }
 
@@ -67,9 +78,10 @@ function usePostButton() {
     newTextarea.innerHTML
   );
   blogPosts.push(createBlogPost);
-  console.log(blogPosts);
   sendBlogPostsToLocalStorage();
   window.location.href = "blogPage.html";
+
+  console.log(blogPosts);
 }
 
 /* function createTextInputWithButtonClick() {
