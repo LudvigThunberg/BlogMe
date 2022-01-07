@@ -15,6 +15,9 @@ function handleGoButton() {
   let createAuthorInput: HTMLInputElement = document.getElementById(
     "create-author-input"
   ) as HTMLInputElement;
+  let createAuthorPassword: HTMLInputElement = document.getElementById(
+    "create-author-password"
+  ) as HTMLInputElement;
   let createBlogTitleInput: HTMLInputElement = document.getElementById(
     "create-blog-name-input"
   ) as HTMLInputElement;
@@ -32,6 +35,7 @@ function handleGoButton() {
     id,
     createBlogTitleInput.value,
     createAuthorInput.value,
+    createAuthorPassword.value,
     createBlogDescriptionInput.value,
     createBlogImgUrl.value,
     blogPosts
