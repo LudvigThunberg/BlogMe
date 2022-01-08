@@ -42,8 +42,10 @@ function handleGoButton() {
   );
   blogers.push(createBloger);
   sendToLocalStorage();
+  let blogerIdValue: string = id.toString();
+  sessionStorage.setItem("blogerIdValue", blogerIdValue);
   goButtonNextPage();
-  console.log(blogers);
+  console.log(blogerIdValue);
 }
 
 function sendToLocalStorage() {
@@ -62,25 +64,5 @@ function getFromLocalStorage() {
 }
 
 function goButtonNextPage() {
-  window.location.href = "selectBloger.html";
+  window.location.href = "createArticle.html";
 }
-
-/* function emptyInputs() {
-  let createAuthorInput: HTMLInputElement = document.getElementById(
-    "create-author-input"
-  ) as HTMLInputElement;
-  let createBlogTitleInput: HTMLInputElement = document.getElementById(
-    "create-blog-name-input"
-  ) as HTMLInputElement;
-  let createBlogDescriptionInput: HTMLInputElement = document.getElementById(
-    "create-blog-description-input"
-  ) as HTMLInputElement;
-  let createBlogImgUrl: HTMLInputElement = document.getElementById(
-    "create-blog-img-url"
-  ) as HTMLInputElement;
-
-  createAuthorInput.innerHTML = "";
-  createBlogTitleInput.innerHTML = "";
-  createBlogDescriptionInput.innerHTML = "";
-  createBlogImgUrl.innerHTML = "";
-} */

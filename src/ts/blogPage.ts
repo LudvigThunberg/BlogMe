@@ -9,8 +9,13 @@ window.onload = function () {
   getBlogersFromLocalStorage();
   getBlogPostsFromLocalStorage();
   getBlogerIdFromSessionStorage();
+  createBlogersSelectorHtml();
   createBlogerHtml();
   createBlogpostsHthml();
+  let selectBlogerSelector: HTMLSelectElement = document.getElementById(
+    "selectBloger-blogers"
+  ) as HTMLSelectElement;
+  selectBlogerSelector.addEventListener("change", handleselectorchange);
 };
 
 function getBlogersFromLocalStorage() {
@@ -27,7 +32,34 @@ function getBlogerIdFromSessionStorage() {
   blogerIdValue = sessionStorage.getItem("blogerIdValue");
 }
 
+function createBlogersSelectorHtml() {
+  let selectBlogerBlogers: HTMLSelectElement = document.getElementById(
+    "selectBloger-blogers"
+  ) as HTMLSelectElement;
+  for (let i = 0; i < blogers.length; i++) {
+    let blogerOption: HTMLOptionElement = document.createElement("option");
+    blogerOption.innerHTML = blogers[i].author;
+    blogerOption.value = blogers[i].id.toString();
+    selectBlogerBlogers.appendChild(blogerOption);
+  }
+}
+
+function handleselectorchange() {
+  let selectBlogerSelector: HTMLSelectElement = document.getElementById(
+    "selectBloger-blogers"
+  ) as HTMLSelectElement;
+  blogerIdValue = selectBlogerSelector.value;
+
+  sessionStorage.setItem("blogerIdValue", blogerIdValue);
+
+  createBlogerHtml();
+  createBlogpostsHthml();
+}
+
 function createBlogerHtml() {
+  let blogPageBlogerContainer: HTMLDivElement = document.getElementById(
+    "blogPage-bloger-container"
+  ) as HTMLDivElement;
   let blogPageBlogerName: HTMLHeadingElement = document.getElementById(
     "blogPage-bloger-name"
   ) as HTMLHeadingElement;
@@ -37,6 +69,10 @@ function createBlogerHtml() {
   let blogPageBlogerDescription: HTMLParagraphElement = document.getElementById(
     "blogPage-bloger-description"
   ) as HTMLParagraphElement;
+
+  blogPageBlogerName.innerHTML = "";
+  bloggerImage.innerHTML = "";
+  blogPageBlogerDescription.innerHTML = "";
 
   let blogCreator = blogers.find(
     (theCreator) => theCreator.id.toString() === blogerIdValue
@@ -48,13 +84,15 @@ function createBlogerHtml() {
 }
 
 function createBlogpostsHthml() {
-  let blogPostsSorted = blogPosts.filter(
-    (posts) => posts.authorId.toString() === blogerIdValue
-  );
-
   let blogPageBlogPostContainer: HTMLDivElement = document.getElementById(
     "blogPage-blog-post-container"
   ) as HTMLDivElement;
+
+  blogPageBlogPostContainer.innerHTML = "";
+
+  let blogPostsSorted = blogPosts.filter(
+    (posts) => posts.authorId.toString() === blogerIdValue
+  );
 
   for (let i = blogPostsSorted.length - 1; i >= 0; i--) {
     let title = document.createElement("h2");
@@ -76,5 +114,4 @@ function createBlogpostsHthml() {
     blogPageBlogPostContainer.appendChild(imageContainer);
     blogPageBlogPostContainer.appendChild(text);
   }
-  console.log(blogPostsSorted);
 }

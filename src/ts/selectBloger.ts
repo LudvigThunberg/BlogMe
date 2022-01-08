@@ -44,5 +44,7 @@ function handleselectorchange() {
   ) as HTMLSelectElement;
   let blogerIdValue = selectBlogerSelector.value;
   sessionStorage.setItem("blogerIdValue", blogerIdValue);
+  console.log(blogerIdValue);
+
   window.location.href = "createArticle.html";
 }

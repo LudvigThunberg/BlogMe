@@ -53,6 +53,10 @@ function getFromSessionStorage() {
   blogerIdValue = sessionStorage.getItem("blogerIdValue");
 }
 
+function sendBlogerToSessionStorage() {
+  sessionStorage.setItem("blogerIdValue", blogerIdValue);
+}
+
 function usePostButton() {
   let blogCreator = blogers.find(
     (theCreator) => theCreator.id.toString() === blogerIdValue
@@ -79,87 +83,6 @@ function usePostButton() {
   );
   blogPosts.push(createBlogPost);
   sendBlogPostsToLocalStorage();
+  sendBlogerToSessionStorage();
   window.location.href = "blogPage.html";
-
-  console.log(blogPosts);
 }
-
-/* function createTextInputWithButtonClick() {
-  let blogPostsContainer: HTMLDivElement = document.getElementById(
-    "blog-posts-container"
-  ) as HTMLDivElement;
-
-  if (blogPostsContainer.innerHTML.length <= 0) {
-    let newTextArea = document.createElement("textarea");
-    let saveTextButton = document.createElement("button");
-
-    saveTextButton.id = "save-text-button";
-    newTextArea.id = "new-textarea";
-
-    saveTextButton.addEventListener("click", saveTextToBlogContent);
-
-    saveTextButton.innerHTML = "Spara text!";
-
-    blogPostsContainer.appendChild(newTextArea);
-    blogPostsContainer.appendChild(saveTextButton);
-  }
-}
-
-function createImageInputWithButtonClick() {
-  let blogPostsContainer: HTMLDivElement = document.getElementById(
-    "blog-posts-container"
-  ) as HTMLDivElement;
-  if (blogPostsContainer.innerHTML.length <= 0) {
-    let newImageInput = document.createElement("input");
-    let saveImageButton = document.createElement("button");
-
-    saveImageButton.id = "save-image-button";
-    newImageInput.id = "new-image-input";
-
-    saveImageButton.innerHTML = "Spara bild!";
-
-    saveImageButton.addEventListener("click", saveImageToBlogContent);
-
-    newImageInput.type = "text";
-
-    blogPostsContainer.appendChild(newImageInput);
-    blogPostsContainer.appendChild(saveImageButton);
-  }
-} */
-
-/* function saveTextToBlogContent() {
-  let newTextArea: HTMLTextAreaElement = document.getElementById(
-    "new-textarea"
-  ) as HTMLTextAreaElement;
-  let blogPostsContainer: HTMLDivElement = document.getElementById(
-    "blog-posts-container"
-  ) as HTMLDivElement;
-
-  let textToBlogContent = new Text(newTextArea.value);
-  blogContent.push(textToBlogContent);
-
-  blogPostsContainer.innerHTML = "";
-}
-
-function saveImageToBlogContent() {
-  let newImageInput: HTMLInputElement = document.getElementById(
-    "new-image-input"
-  ) as HTMLInputElement;
-  let blogPostsContainer: HTMLDivElement = document.getElementById(
-    "blog-posts-container"
-  ) as HTMLDivElement;
-
-  let imageToBlogContent = new Image(newImageInput.value);
-  blogContent.push(imageToBlogContent);
-
-  blogPostsContainer.innerHTML = "";
-}
-
-function handlePostButtonClick() {
-  let blogCreator = blogers.find(
-    (theCreator) => theCreator.id.toString() === blogerIdValue
-  );
-  blogCreator.blogPosts;
-  [].push(blogContent);
-  console.log(blogers);
-} */
