@@ -15,7 +15,49 @@
   </head>
   <body>
     <div id="create-background-container">
-      <div class="input-container">
+      <form action="/create" method="post" class="input-container">
+        <label for="create-author-input" class="global-input-text"
+          >Username:
+          <input
+            type="text"
+            name="username"
+            id="create-author-input"
+            class="global-input"
+          />
+        </label>
+        <label for="create-author-password" class="global-input-text"
+          >Password:
+          <input
+            type="password"
+            name="password"
+            id="create-author-password"
+            class="global-input"
+          />
+        </label>
+        <label for="create-blog-name-input"
+          >Blog name:
+          <input
+            type="text"
+            name="blogname"
+            id="create-blog-name-input"
+            class="global-input"
+          />
+        </label>
+        <label for="create-blog-description-input" class="global-input-text"
+          >Description:
+          <input
+            type="text"
+            name="description"
+            id="create-blog-description-input"
+            class="global-input"
+          />
+        </label>
+        <!-- <label for="create-blog-img-url">
+          <input type="file" name="image" id="create-blog-img-url">
+        </label> -->
+        <input type="submit" value="GO!" class="go-button" />
+      </form>
+      <!--  <div class="input-container">
         <p class="global-input-text">Användarnamn:</p>
         <input type="text" id="create-author-input" class="global-input" />
       </div>
@@ -39,7 +81,7 @@
         <p class="global-input-text">Importera bild url:</p>
         <input type="text" id="create-blog-img-url" class="global-input" />
       </div>
-      <button id="create-go-button" class="go-button">Go!</button>
+      <button id="create-go-button" class="go-button">Go!</button> -->
     </div>
   </body>
 </html>
